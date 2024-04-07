@@ -2,10 +2,14 @@ import Navbar from "./components/Navbar";
 import mile from "./assets/mile.png";
 import map from "./assets/map.png";
 import prize from "./assets/prize.png";
+import enugu from "./assets/enugu.png"
 
 import "./index.css";
 import RegisterForm from "./components/RegisterForm";
 import TrainingCard from "./components/TrainingCard";
+import Accordion from "./components/Accordion";
+import InstagramIcon from "./icons/InstagramIcon";
+import FacbookIcon from "./icons/FacbookIcon";
 
 function App() {
   return (
@@ -141,19 +145,96 @@ function App() {
 
       <section className="w-full bg-colorI">
         <div className="w-full bg-colorIV rounded-t-[3.75rem] pt-[8.81rem] px-[3.875rem] pb-[3.38rem]">
-          <h2 className="text-black text-[5.625rem] uppercase font-black text-center mb-[9.2rem]">
+          <h2 className="text-black text-[5.625rem] uppercase font-black text-center mb-[4.8rem]">
             Training RESOURCES
           </h2>
 
-          <div>
-            <TrainingCard />
+          <div className="flex justify-between items-start flex-wrap">
+            {[1, 2, 3].map((item) => (
+              <TrainingCard key={item} />
+            ))}
           </div>
 
           <div></div>
         </div>
       </section>
 
-      <section></section>
+      <section className="w-full bg-colorI">
+        <div className="w-full bg-colorIV rounded-t-[3.75rem] pt-[8.81rem] px-[3.875rem] pb-[3.38rem]">
+          <h2 className="text-black text-[5.625rem] uppercase font-black text-left mb-[1.25rem]">
+            Frequently asked Questions
+          </h2>
+
+          <article className="w-full flex flex-col justify-start items-start gap-y-[1.25rem]">
+            <Accordion />
+            <Accordion />
+            <Accordion />
+            <Accordion />
+            <Accordion />
+            <Accordion />
+          </article>
+        </div>
+      </section>
+
+      <section className="w-full bg-colorIV">
+        <div className="w-full bg-white rounded-t-[3.75rem] pt-[8.81rem] px-[3.875rem] pb-[3.38rem]">
+          <article className="w-full flex items-start justify-start h-[30rem]">
+            <div className="w-1/2 border border-black border-r-0 h-full">
+              <h5 className="text-black text-[6.875rem] font-black uppercase">
+                Still <br /> need <br />
+                help?
+              </h5>
+            </div>
+            <div className="w-1/2 h-full flex justify-start items-start flex-wrap">
+              <div className="w-1/2 h-1/2 border border-black border-r-0 border-b-0 px-[1.44rem] py-[1.25rem]">
+                <h6 className="text-black text-[1.875rem] font-black uppercase">
+                  Location
+                </h6>
+                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                  The Marathon starts from Okpara Square and ends at Nnamdi
+                  Azikwe Stadium Gate.
+                </p>
+              </div>
+              <div className="w-1/2 h-1/2 border border-black border-b-0 px-[1.44rem] py-[1.25rem]">
+                <h6 className="text-black text-[1.875rem] font-black uppercase">
+                  Call Us
+                </h6>
+                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                  727-802-2802
+                </p>
+                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                  727-802-2802
+                </p>
+              </div>
+              <div className="w-1/2 h-1/2 border border-black border-r-0 px-[1.44rem] py-[1.25rem]">
+                <h6 className="text-black text-[1.875rem] font-black uppercase">
+                  MAil Us
+                </h6>
+                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                  ccm@gmail.com
+                </p>
+              </div>
+              <div className="w-1/2 h-1/2 border border-black px-[1.44rem] py-[1.25rem]">
+                <h6 className="text-black text-[1.875rem] font-black uppercase">
+                  FInd Us OnLine
+                </h6>
+                <div className="flex justify-start items-center gap-[0.62rem]">
+                  <InstagramIcon />
+                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">Instagram</p>
+                </div>
+                <div className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]">
+                  <FacbookIcon />
+                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">Facebook</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div className="w-full">
+            <img src={enugu} alt="enugu logo" />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
