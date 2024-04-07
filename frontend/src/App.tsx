@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar";
 import mile from "./assets/mile.png";
 import map from "./assets/map.png";
 import prize from "./assets/prize.png";
-import enugu from "./assets/enugu.png"
+import enugu from "./assets/enugu.png";
 
 import "./index.css";
 import RegisterForm from "./components/RegisterForm";
@@ -22,18 +22,21 @@ function App() {
             Coal City Half Marathon
           </p>
         </div>
-        <h5 className="text-white text-6xl font-black uppercase mt-4">
+        <h5 className="text-white text-6xl font-black uppercase xl:mt-4">
           Run the Extra
         </h5>
         <div className="w-full h-[16.25rem]">
-          <img src={mile} alt="mile" className="w-full h-full object-contain" />
+          <img src={mile} alt="mile" className="w-full h-full object-cover" />
         </div>
         <button className="w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase">
           Join the Race
         </button>
       </header>
 
-      <section className="bg-colorIII rounded-t-[3.75rem] pt-[1.86rem] px-[4.28rem] pb-[7.13rem]">
+      <section
+        id="join-race"
+        className="bg-colorIII rounded-t-[3.75rem] pt-[1.86rem] px-[4.28rem] pb-[7.13rem]"
+      >
         <article className="flex justify-center gap-[20px] items-start w-full">
           <div className="flex flex-col justify-center items-center">
             <h2 className="text-center text-[10rem] stroke-3 font-black">00</h2>
@@ -220,11 +223,15 @@ function App() {
                 </h6>
                 <div className="flex justify-start items-center gap-[0.62rem]">
                   <InstagramIcon />
-                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">Instagram</p>
+                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
+                    Instagram
+                  </p>
                 </div>
                 <div className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]">
                   <FacbookIcon />
-                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">Facebook</p>
+                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
+                    Facebook
+                  </p>
                 </div>
               </div>
             </div>
