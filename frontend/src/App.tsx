@@ -3,7 +3,8 @@ import mile from "./assets/mile.png";
 import map from "./assets/map.png";
 import prize from "./assets/prize.png";
 import enugu from "./assets/enugu.png";
-import prizeMobile from "./assets/prize-mobile.png"
+import prizeMobile from "./assets/prize-mobile.png";
+import route from "./assets/route.png"
 
 import "./index.css";
 import RegisterForm from "./components/RegisterForm";
@@ -11,10 +12,49 @@ import TrainingCard from "./components/TrainingCard";
 import Accordion from "./components/Accordion";
 import InstagramIcon from "./icons/InstagramIcon";
 import FacbookIcon from "./icons/FacbookIcon";
+import { useEffect, useState } from "react";
 
 function App() {
+  const currentDate = new Date();
+  const targetDate = new Date(currentDate.getFullYear(), 4, 4); // April is represented by 3 (zero-based index)
+  const timeDifference = targetDate.getTime() - currentDate.getTime();
+  const [time, setTime] = useState(timeDifference);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(time - 1000);
+    }, 1000);
+    return () => {
+      // second
+    };
+  }, [time]);
+
+  function padToTwoDigits(number: number) {
+    return number < 10 ? "0" + number : number;
+  }
+
+  const getFormattedDate = () => {
+    const total_seconds = Math.floor(time / 1000);
+    const total_min = Math.floor(total_seconds / 60);
+    const totalHrs = Math.floor(total_min / 60);
+    const days = Math.floor(totalHrs / 24);
+
+    const secs = total_seconds % 60;
+    const minutes = total_min % 60;
+    const hours = totalHrs % 24;
+
+    return {
+      secs,
+      minutes: padToTwoDigits(minutes),
+      hours: padToTwoDigits(hours),
+      days: padToTwoDigits(days),
+    };
+  };
+
+
+
   return (
-    <main className="w-full max-w-screen-2xl font-inter">
+    <main className="w-full max-w-screen-2xl font-inter scroll-smooth">
       <header className="bg-headerImg bg-center bg-no-repeat bg-cover w-full min-h-screen pb-[9.42rem] pt-[16.63rem] flex flex-col justify-center items-center">
         <Navbar />
 
@@ -29,41 +69,44 @@ function App() {
         <div className="w-full h-[16.25rem] flex justify-center items-center">
           <img src={mile} alt="mile" className="w-[100%] h-full object-cover" />
         </div>
-        <button className="w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase">
+        <a
+          href="#register"
+          className="flex justify-center items-center w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase hover:bg-opacity-80 transition duration-700"
+        >
           Join the Race
-        </button>
+        </a>
       </header>
 
       <section id="join-race" className="w-full mt-[-3.5rem]">
         <div className="bg-colorIII rounded-t-[3.75rem] pt-[1.86rem] px-4 xl:px-[4.28rem] pb-[4.25rem] xl:pb-[7.13rem]">
-          <article className="flex justify-between xl:justify-center xl:gap-[20px] items-start w-full text-[3.75rem] xl:text-[10rem]">
-            <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black">00</h2>
-              <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
+          <article className="flex justify-between xl:justify-center xl:gap-[20px] items-start w-full text-[3.75rem] xl:text-[10rem] xl:h-[18rem]">
+            <div className="flex flex-col justify-between items-center h-full">
+              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">{getFormattedDate().days}</h2>
+              <h5 className="text-black text-xl xl:text-[3.75rem] font-black uppercase h-auto">
                 Days
-              </p>
+              </h5>
             </div>
-            <h2 className="text-center stroke-3 font-black">:</h2>
+            <h2 className="text-center stroke-3 font-black h-full">:</h2>
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black">00</h2>
+              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">{getFormattedDate().hours}</h2>
               <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
                 Hours
               </p>
             </div>
-            <h2 className="text-center stroke-3 font-black">:</h2>
+            <h2 className="text-center stroke-3 font-black h-full">:</h2>
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black">00</h2>
+              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">{getFormattedDate().minutes}</h2>
               <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
                 Minutes
               </p>
             </div>
           </article>
 
-          <article className="w-full flex flex-col xl:flex-row justify-between items-start liner gap-[3.31rem] mt-12 xl:mt-[17.75rem]">
-            <h1 className="text-black text-[2.5rem] xl:text-[10rem] max-w-[10rem] xl:max-w-none font-black uppercase flex-1 liner">
+          <article className="w-full flex flex-col xl:flex-row justify-between items-start gap-[3.31rem] mt-12 xl:mt-[17.75rem]">
+            <h1 className="text-black text-[2.5rem] xl:text-[10rem] max-w-[10rem] xl:max-w-none font-black uppercase flex-1">
               About Mara <br /> thon
             </h1>
-            <p className="flex-1 liner text-black text-base xl:text-[1.75rem] font-semibold xl:leading-[3.15188rem] uppercase leading-[1.68rem]">
+            <p className="flex-1 text-black text-base xl:text-[1.75rem] font-semibold xl:leading-[3.15188rem] uppercase leading-[1.68rem]">
               The Coal City Marathon, <b>established in 2018</b>, has become a
               standout event in our region. fueled by a vision of{" "}
               <b>inspiring a healthier lifestyle</b> and{" "}
@@ -74,7 +117,7 @@ function App() {
             </p>
           </article>
 
-          <article className="w-full mt-[1.55rem] xl:mt-[5.37rem] flex flex-col items-center justify-center liner">
+          <article className="w-full mt-[1.55rem] xl:mt-[5.37rem] flex flex-col items-center justify-center">
             <div className="h-auto xl:h-[43.8rem] w-full">
               <img
                 src={map}
@@ -82,14 +125,14 @@ function App() {
                 className="w-full h-full object-contain"
               />
             </div>
-            <h3 className="mt-[0.63rem] xl:mt-[1.57rem] text-blackI text-[3.125rem] font-extrabold uppercase">
-              ROUTE
-            </h3>
+            <div className="w-full mt-[0.63rem] xl:mt-[1.57rem] h-[3.8rem]">
+              <img src={route} alt="route image" className="w-full h-full object-contain" />
+            </div>
           </article>
         </div>
       </section>
 
-      <section className="w-full bg-colorIII">
+      <section id="register" className="w-full bg-colorIII">
         <div className="w-full bg-colorII rounded-t-[3.75rem] pt-[4.63rem] xl:pt-[7.5rem] px-[1.12rem] xl:px-[3.875rem] pb-[3.38rem] flex flex-col xl:flex-row justify-between items-start gap-12 xl:gap-3">
           <h1 className="text-black font-black uppercase text-[2.5rem] xl:text-[10rem] flex-1">
             Regis
@@ -104,19 +147,19 @@ function App() {
 
       <section className="w-full bg-colorII">
         <div className="w-full bg-colorI rounded-t-[3.75rem] pt-[4.63rem] xl:pt-[7.5rem] px-[1.12rem] xl:px-[3.875rem] pb-[3.38rem]">
-          <h2 className="text-black text-[2.5rem] xl:text-[5.625rem] uppercase font-black xl:text-center max-w-[10rem] xl:max-w-none mb-[3.29rem] xl:mb-[9.2rem]">
+          <h2 className="text-black text-[2.5rem] xl:text-[5.625rem] uppercase font-black xl:text-center max-w-[10rem] xl:max-w-none mb-[3.29rem] xl:mb-[6rem] 2xl:mb-[9.2rem]">
             Prizes to be won
           </h2>
 
           <div className="w-full hidden xl:flex flex-col xl:flex-row justify-start items-center">
-            <div className="w-full xl:w-[75%] h-[43rem] liner">
+            <div className="w-full xl:w-[66%] h-[43rem]">
               <img
                 src={prize}
                 alt="prize"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="liner w-full xl:w-[25%]">
+            <div className="w-full xl:w-[34%]">
               <div className="mb-[3.15rem]">
                 <small className="text-blackI text-[1.4869rem] font-bold uppercase">
                   First PLACE
@@ -145,7 +188,11 @@ function App() {
           </div>
 
           <div className="xl:hidden h-[18rem] w-full mt-12 mb-20">
-            <img src={prizeMobile} alt="prize" className="w-full h-full object-contain"/>
+            <img
+              src={prizeMobile}
+              alt="prize"
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
       </section>

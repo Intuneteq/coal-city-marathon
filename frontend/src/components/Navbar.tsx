@@ -3,6 +3,8 @@ import ccmLogo from "../assets/ccm-logo.png";
 import enuguLogo from "../assets/enugu-logo.png";
 import { useState } from "react";
 
+import { AnimatePresence, motion } from "framer-motion";
+
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
 
@@ -27,30 +29,45 @@ export default function Navbar() {
             />
           </div>
         </div>
-        <button onClick={() => setShowNav(true)} className="" type="button">
+        <motion.button
+          whileHover={{ scale: 0.8 }}
+          whileTap={{ scale: 1.2 }}
+          onClick={() => setShowNav(true)}
+          type="button"
+        >
           <Bars3BottomRightIcon
             className="w-6 xl:w-8 h-6 xl:h-8"
             color="black"
           />
-        </button>
+        </motion.button>
 
-        {showNav ? (
-          <section className="top-0 right-0 bottom-0 left-0 bg-black bg-opacity-75 fixed z-30 flex justify-end items-start">
-            <div className="w-[16rem] xl:w-[29.43rem] h-full bg-colorI">
-              <button
-                onClick={() => setShowNav(false)}
-                className="absolute top-[1.45rem] xl:top-[2.5rem] right-4 xl:right-[3.75rem]"
+        <AnimatePresence>
+          {showNav ? (
+            <section className="top-0 right-0 bottom-0 left-0 bg-black bg-opacity-75 fixed z-30 flex justify-end items-start">
+              <motion.div
+                whileInView={{ x: [150, 0] }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-[16rem] xl:w-[29.43rem] h-full bg-colorI"
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
-                <XMarkIcon className="w-[2.625rem] h-[2.625rem]" />
-              </button>
-              <ul className="mt-[5.04rem] xl:mt-[8.16rem] w-full pl-[1.34rem] xl:pl-[3.75rem] pr-0 xl:pr-[3.38rem] font-bold text-blackI text-lg xl:text-3xl uppercase flex flex-col justify-start items-start gap-[1.83rem] xl:gap-[2.93rem]">
-                <li>Training Resources</li>
-                <li>Register</li>
-                <li>FAQs</li>
-              </ul>
-            </div>
-          </section>
-        ) : null}
+                <motion.button
+                  whileHover={{ scale: 0.8 }}
+                  whileTap={{ scale: 1.2 }}
+                  onClick={() => setShowNav(false)}
+                  className="absolute top-[1.45rem] xl:top-[2.5rem] right-4 xl:right-[3.75rem]"
+                >
+                  <XMarkIcon className="w-[2.625rem] h-[2.625rem]" />
+                </motion.button>
+                <ul className="mt-[5.04rem] xl:mt-[8.16rem] w-full pl-[1.34rem] xl:pl-[3.75rem] pr-0 xl:pr-[3.38rem] font-bold text-blackI text-lg xl:text-3xl uppercase flex flex-col justify-start items-start gap-[1.83rem] xl:gap-[2.93rem]">
+                  <li>Training Resources</li>
+                  <li>Register</li>
+                  <li>FAQs</li>
+                </ul>
+              </motion.div>
+            </section>
+          ) : null}
+        </AnimatePresence>
       </nav>
     </div>
   );
