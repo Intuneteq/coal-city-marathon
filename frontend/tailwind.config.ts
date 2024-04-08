@@ -18,7 +18,7 @@ export default {
       },
       backgroundImage: {
         headerImg: "url('/header-img.png')",
-        // headerImgMobile: "url('/header-mobile.png')",
+        headerImgMobile: "url('/header-mobile.png')",
         plan: "linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url('/plan.png')",
       },
     },
