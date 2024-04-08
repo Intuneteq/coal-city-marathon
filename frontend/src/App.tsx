@@ -103,8 +103,8 @@ function App() {
       </section>
 
       <section className="w-full bg-colorII">
-        <div className="w-full bg-colorI rounded-t-[3.75rem] pt-[4.63rem] xl:pt-[7.5rem] px-[1.12rem] xl:px-[3.875rem] pb-[3.38rem] liner">
-          <h2 className="text-black text-[2.5rem] xl:text-[5.625rem] uppercase font-black  xl:text-center max-w-[10rem] xl:max-w-0 mb-[3.29rem] xl:mb-[9.2rem]">
+        <div className="w-full bg-colorI rounded-t-[3.75rem] pt-[4.63rem] xl:pt-[7.5rem] px-[1.12rem] xl:px-[3.875rem] pb-[3.38rem]">
+          <h2 className="text-black text-[2.5rem] xl:text-[5.625rem] uppercase font-black xl:text-center max-w-[10rem] xl:max-w-none mb-[3.29rem] xl:mb-[9.2rem]">
             Prizes to be won
           </h2>
 
