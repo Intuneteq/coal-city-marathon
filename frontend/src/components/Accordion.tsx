@@ -1,4 +1,5 @@
 import { MinusIcon, PlusIcon } from "@heroicons/react/16/solid";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 export default function Accordion() {
@@ -20,11 +21,21 @@ export default function Accordion() {
           </button>
         )}
       </div>
-      {toggle ? (
-        <p className="text-[0.75rem] xl:text-[1.5rem] 2xl:text-[1.625rem] text-blackI uppercase ml-4 mt-[1.25rem]">
-          The Coal City Marathon is scheduled for May 4th, 2024.
-        </p>
-      ) : null}
+      <AnimatePresence>
+        {toggle ? (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            <p className="text-[0.75rem] xl:text-[1.5rem] 2xl:text-[1.625rem] text-blackI uppercase ml-4 mt-[1.25rem]">
+              The Coal City Marathon is scheduled for May 4th, 2024.
+            </p>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }
