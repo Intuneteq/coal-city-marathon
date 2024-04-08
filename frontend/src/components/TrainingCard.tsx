@@ -2,7 +2,17 @@ import { useState } from "react";
 import UploadIcon from "../icons/UploadIcon";
 import { motion, useAnimation } from "framer-motion";
 
-export default function TrainingCard() {
+type Props = {
+  resource: {
+    id: number;
+    title: string;
+    img: string;
+    description: string;
+    resource: string;
+  };
+};
+
+export default function TrainingCard({ resource }: Props) {
   const [showCardDeets, setShowCardDeets] = useState(false);
   const h6Controls = useAnimation();
 
@@ -18,23 +28,22 @@ export default function TrainingCard() {
 
   return (
     <div
-    onMouseEnter={handleHoverStart}
-    onMouseLeave={handleHoverEnd}
-      className="w-full lg:w-[21rem] xl:w-[23.5rem] 2xl:w-[28rem] h-[37.1875rem] px-[1.25rem] py-[2.5rem] bg-plan bg-cover bg-no-repeat rounded-2xl cursor-pointer relative flex flex-col justify-end items-start"
+      onMouseEnter={handleHoverStart}
+      onMouseLeave={handleHoverEnd}
+      className={`w-full lg:w-[21rem] xl:w-[23.5rem] 2xl:w-[28rem] h-[37.1875rem] px-[1.25rem] py-[2.5rem] bg-cover bg-center bg-no-repeat rounded-2xl cursor-pointer relative flex flex-col justify-end items-start ${resource.img}`}
     >
       <motion.h6
-       animate={showCardDeets ? { y: -30 } : { y: 0 }}
-       transition={{ ease: "linear", duration: 0.3 }}
-        className="text-white text-[2.5rem] font-extrabold uppercase"
+        animate={showCardDeets ? { y: -30 } : { y: 0 }}
+        transition={{ ease: "linear", duration: 0.3 }}
+        className="text-white text-[2.5rem] font-extrabold uppercase max-w-[18rem]"
       >
-        Training <br />
-        Plan
+        {resource.title}
       </motion.h6>
       {showCardDeets ? (
         <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ ease: "linear", duration: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ease: "linear", duration: 0.5 }}
           className="w-full"
         >
           <motion.p
@@ -43,13 +52,12 @@ export default function TrainingCard() {
             transition={{ ease: "linear", duration: 0.5 }}
             className="text-white text-lg font-medium"
           >
-            Whether you're a beginner or experienced runner, we offer customized
-            20km marathon training plans. Each plan, tailored for all levels,
-            features weekly mileage goals and diverse workouts to boost your
-            performance and help you achieve your goals.
+            {resource.description}
           </motion.p>
           <div className="w-full mt-6">
-            <motion.button
+            <motion.a
+              href={resource.resource}
+              download
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ ease: "easeIn", duration: 0.5 }}
@@ -57,7 +65,7 @@ export default function TrainingCard() {
             >
               <UploadIcon />
               <span className="text-xl font-medium">Download</span>
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       ) : null}

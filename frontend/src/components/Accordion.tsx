@@ -2,14 +2,25 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/16/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-export default function Accordion() {
+type Props = {
+  faq: {
+    id: number;
+    question: string;
+    answer: string;
+  };
+};
+
+export default function Accordion({ faq }: Props) {
   const [toggle, setToggle] = useState(false);
+
+  const { id, question, answer } = faq;
+
   return (
     <div className="bg-white rounded-[1.25rem] text-blackI py-5 px-[1.875rem] w-full h-auto">
       <div className="flex justify-between items-start">
-        <div className="flex justify-start items-start text-blackI text-[0.875rem] xl:text-[2rem] 2xl:text-[2.5rem] font-semibold uppercase">
-          <p>1.</p>
-          <p>When is the Coal City Marathon scheduled to take place?</p>
+        <div className="flex justify-start items-start text-blackI text-[0.875rem] xl:text-[2rem] 2xl:text-[2.5rem] font-semibold uppercase gap-1">
+          <p>{id}.{" "}</p>
+          <p>{question}</p>
         </div>
         {!toggle ? (
           <button type="button" onClick={() => setToggle(!toggle)}>
@@ -30,8 +41,8 @@ export default function Accordion() {
             transition={{ duration: 0.3 }}
             className="w-full"
           >
-            <p className="text-[0.75rem] xl:text-[1.5rem] 2xl:text-[1.625rem] text-blackI uppercase ml-4 mt-[1.25rem]">
-              The Coal City Marathon is scheduled for May 4th, 2024.
+            <p className="text-[0.75rem] xl:text-[1.5rem] 2xl:text-[1.625rem] text-blackI uppercase ml-5 mt-[1.25rem]">
+              {answer}
             </p>
           </motion.div>
         ) : null}

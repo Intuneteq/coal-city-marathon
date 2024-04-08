@@ -1,18 +1,112 @@
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
+
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
-import Select, { StylesConfig } from "react-select";
+import Select, { MultiValue, SingleValue, StylesConfig } from "react-select";
+
+type State = {
+  name: string;
+  capital: string;
+  state_code: string;
+  creation_date: string;
+  location: {
+    latitude: string;
+    longitude: string;
+  };
+  total_area: string;
+  population: string;
+  postal_code: string;
+};
+
+type LGA = {
+  name: string;
+};
+
 type SelectOption = {
   label: string;
   value: string;
 };
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
-
 export default function RegisterForm() {
-  async function onSubmit() {}
+  const [states, setStates] = useState<SelectOption[]>([]);
+  const [lgas, setLgas] = useState<SelectOption[]>([]);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const [state, setState] = useState<SelectOption>();
+  const [age, setAge] = useState<SelectOption>();
+  const [gender, setGender] = useState<SelectOption>();
+  const [lga, setLga] = useState<SelectOption>();
+
+  const [term, setTerm] = useState(false);
+
+  async function onSubmit() {
+    const payload = {
+      name,
+      email,
+      phoneNumber,
+      state,
+      age: age?.value,
+      gender: gender?.value,
+      lga: lga?.value,
+      term,
+    };
+
+    console.log(payload);
+  }
+
+  function handleStateChange(
+    newValue: MultiValue<SelectOption> | SingleValue<SelectOption>
+  ) {
+    const option = newValue as SelectOption;
+    setState(option);
+  }
+
+  const fetchStates = async () => {
+    try {
+      const response = await axios.get<State[]>(
+        "https://nigeria-states-towns-lga.onrender.com/api/states"
+      );
+
+      const stateOptions = response.data.map((item) => {
+        return {
+          label: item.name,
+          value: item.state_code,
+        };
+      });
+      setStates(stateOptions);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const fetchLgas = useCallback(async () => {
+    if (state) {
+      try {
+        const response = await axios.get<LGA[]>(
+          `https://nigeria-states-towns-lga.onrender.com/api/${state.value}/lgas`
+        );
+        const lgaOptions = response.data.map((item) => ({
+          label: item.name,
+          value: item.name,
+        }));
+
+        setLgas(lgaOptions);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  }, [state]);
+
+  useEffect(() => {
+    fetchStates();
+  }, []);
+
+  useEffect(() => {
+    fetchLgas();
+  }, [fetchLgas, state]);
 
   return (
     <form className="w-full" onSubmit={onSubmit}>
@@ -27,6 +121,8 @@ export default function RegisterForm() {
           type="text"
           placeholder="Your Name"
           className="w-full bg-transparent border-b-[3px] border-b-blackI py-3 xl:py-4 px-6 xl:px-6 focus:outline-none text-base xl:text-3xl text-blackI placeholder:text-blackI placeholder:text-opacity-50 placeholder:italic focus:bg-transparent"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
 
@@ -41,6 +137,8 @@ export default function RegisterForm() {
           type="email"
           placeholder="email@xyz.com"
           className="w-full bg-transparent border-b-[3px] border-b-blackI py-3 xl:py-4 px-6 xl:px-6 focus:outline-none text-base xl:text-3xl text-blackI placeholder:text-blackI placeholder:text-opacity-50 placeholder:italic"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
@@ -55,6 +153,8 @@ export default function RegisterForm() {
           type="text"
           placeholder="(0)-000-000"
           className="w-full bg-transparent border-b-[3px] border-b-blackI py-3 xl:py-4 px-6 xl:px-6 focus:outline-none text-base xl:text-3xl text-blackI placeholder:text-blackI placeholder:text-opacity-50 placeholder:italic"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
 
@@ -67,7 +167,7 @@ export default function RegisterForm() {
         </label>
         <Select
           styles={styles}
-          options={options}
+          options={genderOptions}
           className="w-full"
           placeholder={"-Select-"}
           components={{
@@ -75,19 +175,21 @@ export default function RegisterForm() {
               <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
             ),
           }}
+          value={gender}
+          onChange={(v) => setGender(v as SelectOption)}
         />
       </div>
 
       <div className="flex flex-col justify-start items-start mb-6">
         <label
           className="text-base xl:text-2xl text-blackI font-semibold uppercase"
-          htmlFor="gender"
+          htmlFor="age"
         >
           AGE
         </label>
         <Select
           styles={styles}
-          options={options}
+          options={ageOptions}
           className="w-full"
           placeholder={"-Select-"}
           components={{
@@ -95,16 +197,20 @@ export default function RegisterForm() {
               <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
             ),
           }}
+          value={age}
+          onChange={(v) => setAge(v as SelectOption)}
         />
       </div>
 
       <div className="flex flex-col justify-start items-start mb-6">
-        <label className="label" htmlFor="gender">
+        <label className="label" htmlFor="state">
           State
         </label>
         <Select
+          value={state}
+          onChange={handleStateChange}
           styles={styles}
-          options={options}
+          options={states}
           className="w-full"
           placeholder={"-Select-"}
           components={{
@@ -118,13 +224,13 @@ export default function RegisterForm() {
       <div className="flex flex-col justify-start items-start mb-6">
         <label
           className="text-base xl:text-2xl text-blackI font-semibold uppercase"
-          htmlFor="gender"
+          htmlFor="lga"
         >
           LGA
         </label>
         <Select
           styles={styles}
-          options={options}
+          options={lgas}
           className="w-full"
           placeholder={"-Select-"}
           components={{
@@ -132,6 +238,8 @@ export default function RegisterForm() {
               <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
             ),
           }}
+          value={lga}
+          onChange={(v) => setLga(v as SelectOption)}
         />
       </div>
 
@@ -141,6 +249,7 @@ export default function RegisterForm() {
           name="terms"
           id="terms"
           className="w-6 xl:w-[2.625rem] h-6 xl:h-[2.62rem] regular-checkbox cursor-pointer"
+          onChange={(e) => setTerm(e.target.checked)}
         />
         <label
           htmlFor="terms"
@@ -150,7 +259,7 @@ export default function RegisterForm() {
         </label>
       </div>
       <button
-        className="w-full bg-blackI rounded-[0.75rem] flex justify-center items-center py-4 xl:py-[1.875rem] px-[0.625rem] mt-[2.5rem] xl:mt-5 text-white text-base xl:text-[1.75rem] font-semibold uppercase"
+        className="w-full bg-blackI rounded-[0.75rem] flex justify-center items-center py-4 xl:py-[1.875rem] px-[0.625rem] mt-[2.5rem] xl:mt-5 text-white text-base xl:text-[1.75rem] font-semibold uppercase hover:bg-opacity-80 transition duration-700"
         type="submit"
       >
         Join the Race
@@ -212,7 +321,7 @@ const styles: StylesConfig<SelectOption> = {
     color: "#1C1C1C",
     fontStyle: "italic",
     fontSize: "1.875rem",
-    opacity: "50%"
+    opacity: "50%",
   }),
   singleValue: (base) => ({
     ...base,
@@ -228,3 +337,35 @@ const styles: StylesConfig<SelectOption> = {
     ...base,
   }),
 };
+
+const ageOptions = [
+  {
+    value: "18-24",
+    label: "18-24",
+  },
+  {
+    value: "25-34",
+    label: "25-34",
+  },
+  {
+    value: "35-44",
+    label: "35-44",
+  },
+  {
+    value: "45-54",
+    label: "45-54",
+  },
+  {
+    value: "55-64",
+    label: "55-64",
+  },
+  {
+    value: "65 and over",
+    label: "65 and over",
+  },
+];
+
+const genderOptions = [
+  { value: "MALE", label: "Male" },
+  { value: "FEMALE", label: "Female" },
+];

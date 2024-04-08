@@ -4,7 +4,7 @@ import map from "./assets/map.png";
 import prize from "./assets/prize.png";
 import enugu from "./assets/enugu.png";
 import prizeMobile from "./assets/prize-mobile.png";
-import route from "./assets/route.png"
+import route from "./assets/route.png";
 
 import "./index.css";
 import RegisterForm from "./components/RegisterForm";
@@ -51,8 +51,6 @@ function App() {
     };
   };
 
-
-
   return (
     <main className="w-full max-w-screen-2xl font-inter scroll-smooth">
       <header className="bg-headerImg bg-center bg-no-repeat bg-cover w-full min-h-screen pb-[9.42rem] pt-[16.63rem] flex flex-col justify-center items-center">
@@ -81,21 +79,27 @@ function App() {
         <div className="bg-colorIII rounded-t-[3.75rem] pt-[1.86rem] px-4 xl:px-[4.28rem] pb-[4.25rem] xl:pb-[7.13rem]">
           <article className="flex justify-between xl:justify-center xl:gap-[20px] items-start w-full text-[3.75rem] xl:text-[10rem] xl:h-[18rem]">
             <div className="flex flex-col justify-between items-center h-full">
-              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">{getFormattedDate().days}</h2>
+              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">
+                {getFormattedDate().days}
+              </h2>
               <h5 className="text-black text-xl xl:text-[3.75rem] font-black uppercase h-auto">
                 Days
               </h5>
             </div>
             <h2 className="text-center stroke-3 font-black h-full">:</h2>
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">{getFormattedDate().hours}</h2>
+              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">
+                {getFormattedDate().hours}
+              </h2>
               <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
                 Hours
               </p>
             </div>
             <h2 className="text-center stroke-3 font-black h-full">:</h2>
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">{getFormattedDate().minutes}</h2>
+              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">
+                {getFormattedDate().minutes}
+              </h2>
               <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
                 Minutes
               </p>
@@ -126,7 +130,11 @@ function App() {
               />
             </div>
             <div className="w-full mt-[0.63rem] xl:mt-[1.57rem] h-[3.8rem]">
-              <img src={route} alt="route image" className="w-full h-full object-contain" />
+              <img
+                src={route}
+                alt="route image"
+                className="w-full h-full object-contain"
+              />
             </div>
           </article>
         </div>
@@ -197,15 +205,15 @@ function App() {
         </div>
       </section>
 
-      <section className="w-full bg-colorI">
+      <section id="training-resource" className="w-full bg-colorI">
         <div className="w-full bg-colorIV rounded-t-[3.75rem] pt-[4.7rem] xl:pt-[8.81rem] px-4 xl:px-[3.875rem] pb-[3.38rem]">
           <h2 className="text-black text-[2.4rem] xl:text-[5.625rem] uppercase font-black xl:text-center mb-[4.8rem]">
             Training RESOURCES
           </h2>
 
           <div className="flex justify-between items-start flex-wrap gap-y-[1.88rem]">
-            {[1, 2, 3].map((item) => (
-              <TrainingCard key={item} />
+            {trainingResources.map((item) => (
+              <TrainingCard key={item.id} resource={item} />
             ))}
           </div>
 
@@ -220,17 +228,14 @@ function App() {
           </h2>
 
           <article className="w-full flex flex-col justify-start items-start gap-y-3 xl:gap-y-[1.25rem]">
-            <Accordion />
-            <Accordion />
-            <Accordion />
-            <Accordion />
-            <Accordion />
-            <Accordion />
+            {faqs.map((item) => (
+              <Accordion key={item.id} faq={item} />
+            ))}
           </article>
         </div>
       </section>
 
-      <section className="w-full bg-colorIV">
+      <section id="faqs" className="w-full bg-colorIV">
         <div className="w-full bg-white rounded-t-[3.75rem] pt-[4.7rem] xl:pt-[8.81rem] px-4 xl:px-[3.875rem] pb-[3.38rem]">
           <article className="w-full flex flex-col xl:flex-row items-start justify-start h-auto xl:h-[30rem]">
             <div className="xl:w-1/2 border-black xl:border-l-[1px] xl:border-t-[1px] xl:border-b-[1px] h-full mb-12 xl:mb-0">
@@ -253,18 +258,21 @@ function App() {
                   Call Us
                 </h6>
                 <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
-                  727-802-2802
+                  08035537369
                 </p>
                 <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
-                  727-802-2802
+                  08063270616
+                </p>
+                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                  08032744778
                 </p>
               </div>
               <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black xl:border-t-[1px] border-b-[1px] xl:border-b-0 px-[1.44rem] py-[1.25rem]">
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   MAil Us
                 </h6>
-                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
-                  ccm@gmail.com
+                <p className="text-black text-[1.125rem] font-medium uppercase text-justify w-full text-wrap break-words">
+                  ministryofyouthandsports@enugustate.gov.ng
                 </p>
               </div>
               <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black xl:border-l-[1px] border-l-0 px-[1.44rem] py-[1.25rem]">
@@ -297,3 +305,95 @@ function App() {
 }
 
 export default App;
+
+const trainingResources = [
+  {
+    id: 1,
+    title: "Training PLAN",
+    img: "bg-plan",
+    description:
+      "Whether you're a beginner or experienced runner, we offer customized 20km marathon training plans. Each plan, tailored for all levels, features weekly mileage goals and diverse workouts to boost your performance and help you achieve your goals.",
+    resource: "/src/assets/Training_Plans.pdf",
+  },
+  {
+    id: 2,
+    title: "INJURY PREVENTION",
+    img: "bg-injury",
+    description:
+      "Stay injury-free with our injury prevention tips. Learn to prevent common running injuries, including stretching, cross-training, and recovery techniques. Train smarter, stronger, and safer with our guidance.",
+    resource: "/src/assets/Injury_Prevention.pdf",
+  },
+  {
+    id: 3,
+    title: "Nutrition & HYDRATION",
+    img: "bg-nutrition",
+    description:
+      "Proper nutrition is key for marathon success. Get expert advice on pre-race nutrition, hydration strategies, and in-race fueling techniques. Explore energy-boosting recipes to fuel your training and race day.",
+    resource: "/src/assets/Nutrition_Guidelines.pdf",
+  },
+];
+
+const faqs = [
+  {
+    id: 1,
+    question: "When is the Coal City Marathon scheduled to take place?",
+    answer: "The Coal City Marathon is scheduled for May 4th, 2024.",
+  },
+  {
+    id: 2,
+    question: "Where does the marathon start and finish?",
+    answer:
+      "The marathon starts at Okpara Square and finishes at Nnamdi Azikwe Stadium Gate in Enugu Metropolis.",
+  },
+  {
+    id: 3,
+    question: "How can I register for the marathon?",
+    answer:
+      "You can register for the marathon online through our website registration form.",
+  },
+  {
+    id: 4,
+    question: "What are the registration fees for the marathon?",
+    answer:
+      "Registration attracts a flat fee of N2,000 only. Please visit our Registration section for more information.",
+  },
+  {
+    id: 5,
+    question:
+      "Are there any age restrictions for participating in the marathon?",
+    answer:
+      "Participants must be at least 18 years old on the day of the race.",
+  },
+  {
+    id: 6,
+    question:
+      "Can I transfer my registration to another person if I am unable to participate?",
+    answer: "No, registration transfers are not allowed",
+  },
+  {
+    id: 7,
+    question: "Will there be aid stations along the marathon route?",
+    answer:
+      "Yes, there will be aid stations at regular intervals along the marathon route providing water and medical assistance.",
+  },
+  {
+    id: 8,
+    question: "How can I volunteer to help with the marathon?",
+    answer:
+      "If you're interested in volunteering, please visit our Volunteer section for more information on how to get involved.",
+  },
+  {
+    id: 9,
+    question:
+      "Where can I find more information about the marathon route and elevation?",
+    answer:
+      "Detailed information about the marathon route, including elevation profiles, can be found on our Route Details page.",
+  },
+  {
+    id: 10,
+    question:
+      "What prizes are available for participants in the Coal City Marathon?",
+    answer:
+      "Prizes will be awarded to top finishers, including cash prizes, medals, and sponsor-provided gifts. Specific details about prizes are in the Prizes page.",
+  },
+];

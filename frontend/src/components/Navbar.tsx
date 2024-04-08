@@ -1,12 +1,27 @@
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import ccmLogo from "../assets/ccm-logo.png";
 import enuguLogo from "../assets/enugu-logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
+
+  /**
+   * Prevents scroll when modal is up
+   */
+  useEffect(() => {
+    if (showNav) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Ensure scrolling is re-enabled when the component unmounts
+    };
+  }, [showNav]);
 
   return (
     <div className="xl:px-[2.38rem] fixed w-full top-2 xl:top-[1.63rem] z-10">
@@ -60,9 +75,13 @@ export default function Navbar() {
                   <XMarkIcon className="w-[2.625rem] h-[2.625rem]" />
                 </motion.button>
                 <ul className="mt-[5.04rem] xl:mt-[8.16rem] w-full pl-[1.34rem] xl:pl-[3.75rem] pr-0 xl:pr-[3.38rem] font-bold text-blackI text-lg xl:text-3xl uppercase flex flex-col justify-start items-start gap-[1.83rem] xl:gap-[2.93rem]">
-                  <li>Training Resources</li>
-                  <li>Register</li>
-                  <li>FAQs</li>
+                  {navList.map((nav) => (
+                    <li key={nav.path} onClick={() => setShowNav(false)}>
+                      <a className="cursor-pointer" href={nav.path}>
+                        {nav.name}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </motion.div>
             </section>
@@ -72,3 +91,18 @@ export default function Navbar() {
     </div>
   );
 }
+
+const navList = [
+  {
+    name: "Training Resources",
+    path: "#training-resource",
+  },
+  {
+    name: "Register",
+    path: "#register",
+  },
+  {
+    name: "FAQs",
+    path: "#faqs",
+  },
+];

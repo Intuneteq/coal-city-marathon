@@ -20,6 +20,8 @@ export default {
         headerImg: "url('/header-img.png')",
         headerImgMobile: "url('/header-mobile.png')",
         plan: "linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url('/plan.png')",
+        injury: "linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url('/injury.png')",
+        nutrition: "linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url('/nutrition.png')",
       },
 
       animation: {
