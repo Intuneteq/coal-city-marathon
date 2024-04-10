@@ -176,12 +176,12 @@ export default function RegisterForm() {
         <Select
           styles={styles}
           options={genderOptions}
-          className="w-full react-select__placeholder react-select__input"
+          className="w-full react-select__placeholder react-select__input placeholder:text-sm"
           placeholder={"-Select-"}
           classNamePrefix="react-select"
           components={{
             IndicatorSeparator: () => (
-              <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
+              <ChevronDownIcon className="w-6 xl:w-[2.625rem] h-6 xl:h-[2.625rem]" />
             ),
           }}
           value={gender}
@@ -203,7 +203,7 @@ export default function RegisterForm() {
           placeholder={"-Select-"}
           components={{
             IndicatorSeparator: () => (
-              <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
+              <ChevronDownIcon className="w-6 xl:w-[2.625rem] h-6 xl:h-[2.625rem]" />
             ),
           }}
           value={age}
@@ -224,7 +224,7 @@ export default function RegisterForm() {
           placeholder={"-Select-"}
           components={{
             IndicatorSeparator: () => (
-              <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
+              <ChevronDownIcon className="w-6 xl:w-[2.625rem] h-6 xl:h-[2.625rem]" />
             ),
           }}
         />
@@ -244,7 +244,7 @@ export default function RegisterForm() {
           placeholder={"-Select-"}
           components={{
             IndicatorSeparator: () => (
-              <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
+              <ChevronDownIcon className="w-6 xl:w-[2.625rem] h-6 xl:h-[2.625rem]" />
             ),
           }}
           value={lga}
@@ -329,6 +329,10 @@ const styles: StylesConfig<SelectOption> = {
     ...base,
     fontSize: "1.875rem",
     color: "#1C1C1C",
+
+    '@media (max-width: 768px)': {
+      fontSize: "1rem", 
+    }
   }),
   placeholder: (base) => ({
     ...base,
@@ -336,11 +340,19 @@ const styles: StylesConfig<SelectOption> = {
     fontStyle: "italic",
     fontSize: "1.875rem",
     opacity: "50%",
+
+    '@media (max-width: 768px)': {
+      fontSize: "1rem", 
+    }
   }),
   singleValue: (base) => ({
     ...base,
     color: "#1C1C1C",
     fontSize: "1.875rem",
+
+    '@media (max-width: 768px)': {
+      fontSize: "1rem", 
+    }
   }),
   dropdownIndicator: (base) => ({
     ...base,
