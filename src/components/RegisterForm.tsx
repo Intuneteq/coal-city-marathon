@@ -1,8 +1,12 @@
-import { useState, useEffect, useCallback } from "react";
-import axios from "axios";
-
-import { ChevronDownIcon } from "@heroicons/react/16/solid";
+import axios, { AxiosError } from "axios";
+import { useState, useEffect, useCallback, FormEvent } from "react";
 import Select, { MultiValue, SingleValue, StylesConfig } from "react-select";
+
+import {
+  ArrowsPointingOutIcon,
+  ChevronDownIcon,
+} from "@heroicons/react/16/solid";
+import { toast } from "react-toastify";
 
 type State = {
   name: string;
@@ -41,21 +45,48 @@ export default function RegisterForm() {
   const [lga, setLga] = useState<SelectOption>();
 
   const [term, setTerm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async function onSubmit() {
-    const payload = {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const data = {
       name,
       email,
       phoneNumber,
-      state,
+      state: state?.value,
       age: age?.value,
       gender: gender?.value,
       lga: lga?.value,
       term,
     };
 
-    console.log(payload);
+    try {
+      const res = await axios.post<IRegister>(
+        "http://localhost:5000/api/users/register",
+        data
+      );
+      // Redirect user to flutterwave's checkout page
+      window.location.href = res.data.data.link;
+    } catch (error) {
+      const err = error as AxiosError<IError>;
+      toast.error(err.response?.data.message);
+    }
+
+    setIsLoading(false);
   }
+
+  const canSave = [
+    name,
+    email,
+    phoneNumber,
+    state,
+    age,
+    gender,
+    lga,
+    term,
+  ].every((field) => Boolean(field));
 
   function handleStateChange(
     newValue: MultiValue<SelectOption> | SingleValue<SelectOption>
@@ -109,7 +140,7 @@ export default function RegisterForm() {
   }, [fetchLgas, state]);
 
   return (
-    <form className="w-full" onSubmit={onSubmit}>
+    <form className="w-full" onSubmit={(e) => onSubmit(e)}>
       <div className="flex flex-col justify-start items-start mb-6">
         <label
           className="text-base xl:text-2xl text-blackI font-semibold uppercase"
@@ -261,8 +292,13 @@ export default function RegisterForm() {
       <button
         className="w-full bg-blackI rounded-[0.75rem] flex justify-center items-center py-4 xl:py-[1.875rem] px-[0.625rem] mt-[2.5rem] xl:mt-5 text-white text-base xl:text-[1.75rem] font-semibold uppercase hover:bg-opacity-80 transition duration-700"
         type="submit"
+        disabled={isLoading || !canSave}
       >
-        Join the Race
+        {isLoading ? (
+          <ArrowsPointingOutIcon className="h-5 w-5 text-white animate-spin" />
+        ) : (
+          "Join the Race"
+        )}
       </button>
       <small className="text-center block text-blackI text-base xl:text-[1.4375rem] font-medium mt-5">
         *Registration Ends April 30th.

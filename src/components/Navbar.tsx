@@ -24,7 +24,7 @@ export default function Navbar() {
   }, [showNav]);
 
   return (
-    <div className="xl:px-[2.38rem] fixed w-full top-2 xl:top-[1.63rem] z-10">
+    <div className="xl:px-[2.38rem] fixed w-full top-2 xl:top-[1.63rem] z-10 max-w-screen-2xl">
       <nav className="w-full bg-colorI h-[3.6rem] xl:h-[6.2rem] xl:rounded-[0.375rem] px-4 xl:px-12 flex justify-center items-center">
         <div className="mx-auto flex justify-center items-center">
           <div className="w-[2.8rem] xl:w-[6.5rem] h-4 xl:h-[2.3rem]">

@@ -52,7 +52,7 @@ function App() {
   };
 
   return (
-    <main className="w-full max-w-screen-2xl font-inter scroll-smooth">
+    <main className="w-full max-w-screen-2xl font-inter scroll-smooth mx-auto">
       <header className="bg-headerImg bg-center bg-no-repeat bg-cover w-full min-h-screen pb-[9.42rem] pt-[16.63rem] flex flex-col justify-center items-center">
         <Navbar />
 
