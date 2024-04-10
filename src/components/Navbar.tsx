@@ -4,6 +4,8 @@ import enuguLogo from "../assets/enugu-logo.png";
 import { useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
+import InstagramIcon from "../icons/InstagramIcon";
+import FacbookIcon from "../icons/FacbookIcon";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false);
@@ -62,7 +64,7 @@ export default function Navbar() {
               <motion.div
                 whileInView={{ x: [150, 0] }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-[16rem] xl:w-[29.43rem] h-full bg-colorI"
+                className="w-[16rem] xl:w-[29.43rem] h-full bg-colorI flex flex-col pb-[3.81rem] pl-[1.34rem] xl:pl-[3.75rem] pr-0 xl:pr-[3.38rem]"
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
@@ -74,7 +76,7 @@ export default function Navbar() {
                 >
                   <XMarkIcon className="w-[2.625rem] h-[2.625rem]" />
                 </motion.button>
-                <ul className="mt-[5.04rem] xl:mt-[8.16rem] w-full pl-[1.34rem] xl:pl-[3.75rem] pr-0 xl:pr-[3.38rem] font-bold text-blackI text-lg xl:text-3xl uppercase flex flex-col justify-start items-start gap-[1.83rem] xl:gap-[2.93rem]">
+                <ul className="mt-[5.04rem] xl:mt-[8.16rem] w-full font-bold text-blackI text-lg xl:text-3xl uppercase flex flex-col justify-start items-start gap-[1.83rem] xl:gap-[2.93rem]">
                   {navList.map((nav) => (
                     <li key={nav.path} onClick={() => setShowNav(false)}>
                       <a className="cursor-pointer" href={nav.path}>
@@ -83,6 +85,20 @@ export default function Navbar() {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-auto w-full flex justify-between items-center">
+                  <div className="flex justify-start items-center gap-[0.62rem]">
+                    <InstagramIcon />
+                    <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
+                      Instagram
+                    </p>
+                  </div>
+                  <div className="flex justify-start items-center gap-[0.62rem]">
+                    <FacbookIcon />
+                    <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
+                      Facebook
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             </section>
           ) : null}
