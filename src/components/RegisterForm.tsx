@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
 import { useState, useEffect, useCallback, FormEvent } from "react";
 import Select, { MultiValue, SingleValue, StylesConfig } from "react-select";
@@ -6,30 +7,6 @@ import {
   ArrowsPointingOutIcon,
   ChevronDownIcon,
 } from "@heroicons/react/16/solid";
-import { toast } from "react-toastify";
-
-type State = {
-  name: string;
-  capital: string;
-  state_code: string;
-  creation_date: string;
-  location: {
-    latitude: string;
-    longitude: string;
-  };
-  total_area: string;
-  population: string;
-  postal_code: string;
-};
-
-type LGA = {
-  name: string;
-};
-
-type SelectOption = {
-  label: string;
-  value: string;
-};
 
 export default function RegisterForm() {
   const [states, setStates] = useState<SelectOption[]>([]);
