@@ -212,7 +212,7 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col justify-start items-start mb-6">
-        <label className="label" htmlFor="state">
+        <label className="text-base xl:text-2xl text-blackI font-semibold uppercase" htmlFor="state">
           State
         </label>
         <Select
