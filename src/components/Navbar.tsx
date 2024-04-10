@@ -85,19 +85,19 @@ export default function Navbar() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto w-full flex justify-between items-center">
-                  <div className="flex justify-start items-center gap-[0.62rem]">
+                <div className="mt-auto w-full flex flex-col xl:flex-row justify-between items-start xl:items-center gap-y-5">
+                  <a href="https://www.instagram.com/coalcitymarathon_/?igsh=aXR3MGM5cnpjY3B1"  target="_blank" rel="noopener" className="flex justify-start items-center gap-[0.62rem]">
                     <InstagramIcon />
                     <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
                       Instagram
                     </p>
-                  </div>
-                  <div className="flex justify-start items-center gap-[0.62rem]">
+                  </a>
+                  <a href="https://www.facebook.com/coalcitymaratho?mibextid=LQQJ4d"  target="_blank" rel="noopener" className="flex justify-start items-center gap-[0.62rem]">
                     <FacbookIcon />
                     <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
                       Facebook
                     </p>
-                  </div>
+                  </a>
                 </div>
               </motion.div>
             </section>

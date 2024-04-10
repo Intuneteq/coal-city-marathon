@@ -264,7 +264,7 @@ export default function RegisterForm() {
           htmlFor="terms"
           className="text-blackI text-base xl:text-xl font-medium"
         >
-          I agree to the terms and conditions
+          <a href="" download>I agree to the terms and conditions</a>
         </label>
       </div>
       <button

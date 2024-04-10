@@ -282,18 +282,18 @@ function App() {
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   FInd Us OnLine
                 </h6>
-                <div className="flex justify-start items-center gap-[0.62rem]">
+                <a href="https://www.instagram.com/coalcitymarathon_/?igsh=aXR3MGM5cnpjY3B1" target="_blank" rel="noopener" className="flex justify-start items-center gap-[0.62rem]">
                   <InstagramIcon />
                   <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
                     Instagram
                   </p>
-                </div>
-                <div className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]">
+                </a>
+                <a href="https://www.facebook.com/coalcitymaratho?mibextid=LQQJ4d" target="_blank" rel="noopener" className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]">
                   <FacbookIcon />
                   <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
                     Facebook
                   </p>
-                </div>
+                </a>
               </div>
             </div>
           </article>
