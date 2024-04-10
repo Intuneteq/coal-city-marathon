@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import mile from "./assets/mile.png";
+import mileMobile from "./assets/mile-mobile.png"
 import map from "./assets/map.png";
 import prize from "./assets/prize.png";
 import enugu from "./assets/enugu.png";
@@ -24,9 +25,6 @@ function App() {
     setTimeout(() => {
       setTime(time - 1000);
     }, 1000);
-    return () => {
-      // second
-    };
   }, [time]);
 
   function padToTwoDigits(number: number) {
@@ -64,9 +62,14 @@ function App() {
         <h5 className="text-white text-[2.375rem] xl:text-6xl font-black uppercase mt-[0.44rem] xl:mt-4">
           Run the Extra
         </h5>
-        <div className="w-full h-[16.25rem] flex justify-center items-center">
-          <img src={mile} alt="mile" className="w-[100%] h-full object-cover" />
+
+        <div className="w-full h-[10.562rem] flex justify-center items-center xl:hidden">
+          <img src={mileMobile} alt="mile" className="w-full h-full object-cover" />
         </div>
+        <div className="hidden w-full h-[16.25rem] xl:flex justify-center items-center">
+          <img src={mile} alt="mile" className="w-full h-full object-cover" />
+        </div>
+
         <a
           href="#register"
           className="flex justify-center items-center w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase hover:bg-opacity-80 transition duration-700"
@@ -339,58 +342,58 @@ const faqs = [
     question: "When is the Coal City Marathon scheduled to take place?",
     answer: "The Coal City Marathon is scheduled for May 4th, 2024.",
   },
+  // {
+  //   id: 2,
+  //   question: "Where does the marathon start and finish?",
+  //   answer:
+  //     "The marathon starts at Okpara Square and finishes at Nnamdi Azikwe Stadium Gate in Enugu Metropolis.",
+  // },
   {
     id: 2,
-    question: "Where does the marathon start and finish?",
-    answer:
-      "The marathon starts at Okpara Square and finishes at Nnamdi Azikwe Stadium Gate in Enugu Metropolis.",
-  },
-  {
-    id: 3,
     question: "How can I register for the marathon?",
     answer:
       "You can register for the marathon online through our website registration form.",
   },
   {
-    id: 4,
+    id: 3,
     question: "What are the registration fees for the marathon?",
     answer:
       "Registration attracts a flat fee of N2,000 only. Please visit our Registration section for more information.",
   },
   {
-    id: 5,
+    id: 4,
     question:
       "Are there any age restrictions for participating in the marathon?",
     answer:
       "Participants must be at least 18 years old on the day of the race.",
   },
+  // {
+  //   id: 6,
+  //   question:
+  //     "Can I transfer my registration to another person if I am unable to participate?",
+  //   answer: "No, registration transfers are not allowed",
+  // },
   {
-    id: 6,
-    question:
-      "Can I transfer my registration to another person if I am unable to participate?",
-    answer: "No, registration transfers are not allowed",
-  },
-  {
-    id: 7,
+    id: 5,
     question: "Will there be aid stations along the marathon route?",
     answer:
       "Yes, there will be aid stations at regular intervals along the marathon route providing water and medical assistance.",
   },
+  // {
+  //   id: 8,
+  //   question: "How can I volunteer to help with the marathon?",
+  //   answer:
+  //     "If you're interested in volunteering, please visit our Volunteer section for more information on how to get involved.",
+  // },
+  // {
+  //   id: 9,
+  //   question:
+  //     "Where can I find more information about the marathon route and elevation?",
+  //   answer:
+  //     "Detailed information about the marathon route, including elevation profiles, can be found on our Route Details page.",
+  // },
   {
-    id: 8,
-    question: "How can I volunteer to help with the marathon?",
-    answer:
-      "If you're interested in volunteering, please visit our Volunteer section for more information on how to get involved.",
-  },
-  {
-    id: 9,
-    question:
-      "Where can I find more information about the marathon route and elevation?",
-    answer:
-      "Detailed information about the marathon route, including elevation profiles, can be found on our Route Details page.",
-  },
-  {
-    id: 10,
+    id: 6,
     question:
       "What prizes are available for participants in the Coal City Marathon?",
     answer:

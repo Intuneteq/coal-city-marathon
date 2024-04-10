@@ -73,3 +73,7 @@
   text-transform: uppercase;
   /* color: transparent; */
 }
+
+.react-select__input::placeholder {
+  color: red;
+}

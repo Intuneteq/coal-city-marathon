@@ -176,8 +176,9 @@ export default function RegisterForm() {
         <Select
           styles={styles}
           options={genderOptions}
-          className="w-full"
+          className="w-full react-select__placeholder react-select__input"
           placeholder={"-Select-"}
+          classNamePrefix="react-select"
           components={{
             IndicatorSeparator: () => (
               <ChevronDownIcon className="w-[2.625rem] h-[2.625rem]" />
