@@ -76,7 +76,7 @@ function App() {
 
         <a
           href="#register"
-          className="flex justify-center items-center w-full xl:w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase hover:bg-opacity-80 transition duration-700"
+          className="flex justify-center items-center w-[80%] xl:w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase hover:bg-opacity-80 transition duration-700"
         >
           Join the Race
         </a>
