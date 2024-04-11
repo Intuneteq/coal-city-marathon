@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import mile from "./assets/mile.png";
-import mileMobile from "./assets/mile-mobile.png"
+import mileMobile from "./assets/mile-mobile.png";
 import map from "./assets/map.png";
 import prize from "./assets/prize.png";
 import enugu from "./assets/enugu.png";
@@ -64,7 +64,11 @@ function App() {
         </h5>
 
         <div className="w-full h-[10.562rem] flex justify-center items-center xl:hidden">
-          <img src={mileMobile} alt="mile" className="w-full h-full object-cover" />
+          <img
+            src={mileMobile}
+            alt="mile"
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="hidden w-full h-[16.25rem] xl:flex justify-center items-center">
           <img src={mile} alt="mile" className="w-full h-full object-cover" />
@@ -72,7 +76,7 @@ function App() {
 
         <a
           href="#register"
-          className="flex justify-center items-center w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase hover:bg-opacity-80 transition duration-700"
+          className="flex justify-center items-center w-full xl:w-[23.8125rem] h-[4.125rem] py-4 rounded-xl bg-colorII text-lg font-semibold text-blackI uppercase hover:bg-opacity-80 transition duration-700"
         >
           Join the Race
         </a>
@@ -282,13 +286,23 @@ function App() {
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   FInd Us OnLine
                 </h6>
-                <a href="https://www.instagram.com/coalcitymarathon_/?igsh=aXR3MGM5cnpjY3B1" target="_blank" rel="noopener" className="flex justify-start items-center gap-[0.62rem]">
+                <a
+                  href="https://www.instagram.com/coalcitymarathon_/?igsh=aXR3MGM5cnpjY3B1"
+                  target="_blank"
+                  rel="noopener"
+                  className="flex justify-start items-center gap-[0.62rem]"
+                >
                   <InstagramIcon />
                   <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
                     Instagram
                   </p>
                 </a>
-                <a href="https://www.facebook.com/coalcitymaratho?mibextid=LQQJ4d" target="_blank" rel="noopener" className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]">
+                <a
+                  href="https://www.facebook.com/coalcitymaratho?mibextid=LQQJ4d"
+                  target="_blank"
+                  rel="noopener"
+                  className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]"
+                >
                   <FacbookIcon />
                   <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
                     Facebook
