@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import UploadIcon from "../icons/UploadIcon";
 import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 type Props = {
   resource: {
@@ -16,6 +17,10 @@ export default function TrainingCard({ resource }: Props) {
   const [showCardDeets, setShowCardDeets] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const h6Controls = useAnimation();
+
+  const { ref, inView } = useInView();
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768); // Change the value based on your design
@@ -30,7 +35,15 @@ export default function TrainingCard({ resource }: Props) {
     };
   }, []);
 
-  const h6Controls = useAnimation();
+  useEffect(() => {
+    if (inView && isMobile) {
+      setShowCardDeets(true);
+      h6Controls.start({ y: -30 });
+    } else {
+      setShowCardDeets(false);
+      h6Controls.start({ y: 0 });
+    }
+  }, [inView, isMobile, h6Controls]);
 
   const handleHoverStart = () => {
     setShowCardDeets(true);
@@ -42,8 +55,20 @@ export default function TrainingCard({ resource }: Props) {
     h6Controls.start({ y: 0 });
   };
 
+  // const handleInView = (inView: boolean) => {
+  //   if (inView && isMobile) {
+  //     setShowCardDeets(true);
+  //     h6Controls.start({ y: -30 });
+  //   } else {
+  //     setShowCardDeets(false);
+  //     h6Controls.start({ y: 0 });
+  //   }
+  // };
+
   return (
-    <div
+    <motion.div
+      // whileHover={!isMobile ? { y: -30 } : {}}
+      ref={ref}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
       className={`w-full lg:w-[21rem] xl:w-[23.5rem] 2xl:w-[28rem] h-[37.1875rem] px-[1.25rem] py-[2.5rem] bg-cover bg-center bg-no-repeat rounded-2xl cursor-pointer relative flex flex-col justify-end items-start ${resource.img}`}
@@ -86,6 +111,6 @@ export default function TrainingCard({ resource }: Props) {
           </div>
         </motion.div>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
