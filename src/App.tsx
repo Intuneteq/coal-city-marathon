@@ -130,12 +130,12 @@ function App() {
             </p>
           </article>
 
-          <article className="w-full mt-[1.55rem] xl:mt-[5.37rem] flex flex-col items-center justify-center liner">
-            <div className="h-auto xl:h-[31rem] 2xl:h-[43.8rem] w-full xl:w-[57rem] liner">
+          <article className="w-full mt-[1.55rem] xl:mt-[5.37rem] flex flex-col items-center justify-center">
+            <div className="h-auto xl:h-[31rem] 2xl:h-[43.8rem] w-full xl:w-[57rem]">
               <img
                 src={map} 
                 alt="route map"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain xl:object-fill"
               />
             </div>
             <div className="w-full mt-[0.63rem] xl:mt-[1.57rem] h-[3.8rem]">
