@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import UploadIcon from "../icons/UploadIcon";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
+import UploadIcon from "../icons/UploadIcon";
 
 type Props = {
   resource: {
@@ -55,19 +56,8 @@ export default function TrainingCard({ resource }: Props) {
     h6Controls.start({ y: 0 });
   };
 
-  // const handleInView = (inView: boolean) => {
-  //   if (inView && isMobile) {
-  //     setShowCardDeets(true);
-  //     h6Controls.start({ y: -30 });
-  //   } else {
-  //     setShowCardDeets(false);
-  //     h6Controls.start({ y: 0 });
-  //   }
-  // };
-
   return (
     <motion.div
-      // whileHover={!isMobile ? { y: -30 } : {}}
       ref={ref}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
