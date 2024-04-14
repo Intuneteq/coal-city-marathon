@@ -52,7 +52,7 @@ function App() {
 
   return (
     <main className="w-full max-w-screen-2xl font-inter scroll-smooth mx-auto">
-      <header className="bg-headerImg bg-center bg-no-repeat bg-cover w-full min-h-screen pb-[9.42rem] pt-[16.63rem] flex flex-col justify-center items-center">
+      <header className="bg-headerImg bg-center bg-no-repeat bg-cover w-full min-h-screen pb-[9.42rem] pt-[16.63rem] xl:pt-[11rem] 2xl:pt[16.63rem] flex flex-col justify-center items-center">
         <Navbar />
 
         <div className="w-72 flex justify-center items-center bg-white bg-opacity-20 rounded-[3.75rem] py-[0.62rem]">
@@ -85,37 +85,38 @@ function App() {
 
       <section id="join-race" className="w-full mt-[-3.5rem]">
         <div className="bg-colorIII rounded-t-[3.75rem] pt-[1.86rem] px-4 xl:px-[4.28rem] pb-[4.25rem] xl:pb-[7.13rem]">
-          <article className="flex justify-between xl:justify-center xl:gap-[20px] items-start w-full text-[3.75rem] xl:text-[10rem] xl:h-[18rem]">
+
+          <article className="flex justify-between xl:justify-center xl:gap-[20px] items-start w-full text-[3.75rem] xl:text-[10rem]">
             <div className="flex flex-col justify-between items-center h-full">
-              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">
+              <h2 className="text-center stroke-3 font-black xl:text-[14rem] 2xl:text-[16.25rem]">
                 {getFormattedDate().days}
               </h2>
-              <h5 className="text-black text-xl xl:text-[3.75rem] font-black uppercase h-auto">
+              <h5 className="text-black text-xl xl:text-[2.5rem] 2xl:text-[3.75rem] font-black uppercase h-auto">
                 Days
               </h5>
             </div>
-            <h2 className="text-center stroke-3 font-black h-full">:</h2>
+            <h2 className="text-center stroke-3 font-black h-full xl:text-[14rem]">:</h2>
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">
+              <h2 className="text-center stroke-3 font-black xl:text-[14rem] 2xl:text-[16.25rem]">
                 {getFormattedDate().hours}
               </h2>
-              <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
+              <h5 className="text-black text-xl xl:text-[2.5rem] 2xl:text-[3.75rem] font-black uppercase">
                 Hours
-              </p>
-            </div>
-            <h2 className="text-center stroke-3 font-black h-full">:</h2>
-            <div className="flex flex-col justify-center items-center">
-              <h2 className="text-center stroke-3 font-black xl:text-[12rem] 2xl:text-[16.25rem]">
+              </h5>
+            </div> 
+            <h2 className="text-center stroke-3 font-black h-full xl:text-[14rem]">:</h2>
+            <div className="flex flex-col justify-center items-center gap-y-0">
+              <h2 className="text-center stroke-3 font-black xl:text-[14rem] 2xl:text-[16.25rem]">
                 {getFormattedDate().minutes}
               </h2>
-              <p className="text-black text-xl xl:text-[3.75rem] font-black uppercase">
+              <h5 className="text-black text-xl xl:text-[2.5rem] 2xl:text-[3.75rem] font-black uppercase">
                 Minutes
-              </p>
+              </h5>
             </div>
           </article>
 
-          <article className="w-full flex flex-col xl:flex-row justify-between items-start gap-[3.31rem] mt-12 xl:mt-[17.75rem]">
-            <h1 className="text-black text-[2.5rem] xl:text-[10rem] max-w-[10rem] xl:max-w-none font-black uppercase flex-1">
+          <article className="w-full flex flex-col xl:flex-row justify-between items-start gap-[3.31rem] xl:gap-0 2xl:gap-[3.31rem] mt-12 xl:mt-24 2xl:mt-[17.75rem]">
+            <h1 className="text-black text-[2.5rem] xl:text-[5.625rem] 2xl:text-[10rem] max-w-[10rem] xl:max-w-none font-black uppercase flex-1">
               About Mara <br /> thon
             </h1>
             <p className="flex-1 text-black text-base xl:text-[1.75rem] font-semibold xl:leading-[3.15188rem] uppercase leading-[1.68rem]">
@@ -129,10 +130,10 @@ function App() {
             </p>
           </article>
 
-          <article className="w-full mt-[1.55rem] xl:mt-[5.37rem] flex flex-col items-center justify-center">
-            <div className="h-auto xl:h-[43.8rem] w-full">
+          <article className="w-full mt-[1.55rem] xl:mt-[5.37rem] flex flex-col items-center justify-center liner">
+            <div className="h-auto xl:h-[31rem] 2xl:h-[43.8rem] w-full xl:w-[57rem] liner">
               <img
-                src={map}
+                src={map} 
                 alt="route map"
                 className="w-full h-full object-contain"
               />
@@ -150,12 +151,12 @@ function App() {
 
       <section id="register" className="w-full bg-colorIII">
         <div className="w-full bg-colorII rounded-t-[3.75rem] pt-[4.63rem] xl:pt-[7.5rem] px-[1.12rem] xl:px-[3.875rem] pb-[3.38rem] flex flex-col xl:flex-row justify-between items-start gap-12 xl:gap-3">
-          <h1 className="text-black font-black uppercase text-[2.5rem] xl:text-[10rem] flex-1">
+          <h1 className="text-black font-black uppercase text-[2.5rem] xl:text-[5.625rem] 2xl:text-[10rem] 2xl:flex-1">
             Regis
             <br />
             ter
           </h1>
-          <div className="flex-1 w-full xl:w-auto">
+          <div className="2xl:flex-1 w-full xl:w-[43rem] 2xl:w-auto">
             <RegisterForm />
           </div>
         </div>
@@ -163,12 +164,12 @@ function App() {
 
       <section className="w-full bg-colorII">
         <div className="w-full bg-colorI rounded-t-[3.75rem] pt-[4.63rem] xl:pt-[7.5rem] px-[1.12rem] xl:px-[3.875rem] pb-[3.38rem]">
-          <h2 className="text-black text-[2.5rem] xl:text-[5.625rem] uppercase font-black xl:text-center max-w-[10rem] xl:max-w-none mb-[3.29rem] xl:mb-[6rem] 2xl:mb-[9.2rem]">
+          <h2 className="text-black text-[2.5rem] xl:text-[5.625rem] uppercase font-black xl:text-center max-w-[10rem] xl:max-w-none mb-[3.29rem] xl:mb-[5.62rem] 2xl:mb-[9.2rem]">
             Prizes to be won
           </h2>
 
           <div className="w-full hidden xl:flex flex-col xl:flex-row justify-start items-center">
-            <div className="w-full xl:w-[66%] h-[43rem]">
+            <div className="w-full xl:w-[66%] h-[43rem] xl:h-[32rem] 2xl:h-[43rem]">
               <img
                 src={prize}
                 alt="prize"
