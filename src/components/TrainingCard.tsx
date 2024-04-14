@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UploadIcon from "../icons/UploadIcon";
 import { motion, useAnimation } from "framer-motion";
 
@@ -14,6 +14,22 @@ type Props = {
 
 export default function TrainingCard({ resource }: Props) {
   const [showCardDeets, setShowCardDeets] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // Change the value based on your design
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
   const h6Controls = useAnimation();
 
   const handleHoverStart = () => {
@@ -33,7 +49,8 @@ export default function TrainingCard({ resource }: Props) {
       className={`w-full lg:w-[21rem] xl:w-[23.5rem] 2xl:w-[28rem] h-[37.1875rem] px-[1.25rem] py-[2.5rem] bg-cover bg-center bg-no-repeat rounded-2xl cursor-pointer relative flex flex-col justify-end items-start ${resource.img}`}
     >
       <motion.h6
-        animate={showCardDeets ? { y: -30 } : { y: 0 }}
+        whileInView={isMobile ? { y: -30 } : { y: 0 }}
+        animate={showCardDeets && !isMobile ? { y: -30 } : { y: 0 }}
         transition={{ ease: "linear", duration: 0.3 }}
         className="text-white text-[2.5rem] font-extrabold uppercase max-w-[18rem]"
       >
