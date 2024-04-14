@@ -41,6 +41,7 @@ export default function RegisterForm() {
 
     try {
       const res = await axios.post<IRegister>(
+        // "http://localhost:5000/api/users/register",
         "https://tobi-city-coal.onrender.com/api/users/register",
         data
       );
