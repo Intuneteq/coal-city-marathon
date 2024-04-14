@@ -14,6 +14,7 @@ import Accordion from "./components/Accordion";
 import InstagramIcon from "./icons/InstagramIcon";
 import FacbookIcon from "./icons/FacbookIcon";
 import { useEffect, useState } from "react";
+import SendIcon from "./icons/SendIcon";
 
 function App() {
   const currentDate = new Date();
@@ -246,43 +247,45 @@ function App() {
         <div className="w-full bg-white rounded-t-[3.75rem] pt-[4.7rem] xl:pt-[8.81rem] px-4 xl:px-[3.875rem] pb-[3.38rem]">
           <article className="w-full flex flex-col xl:flex-row items-start justify-start h-auto xl:h-[30rem]">
             <div className="xl:w-1/2 border-black xl:border-l-[1px] xl:border-t-[1px] xl:border-b-[1px] h-full mb-12 xl:mb-0">
-              <h5 className="text-black text-[2.5rem] xl:text-[6.875rem] font-black uppercase">
+              <h5 className="text-black text-[2.5rem] leading-normal xl:text-[6.875rem] font-black uppercase">
                 Still need help?
               </h5>
             </div>
             <div className="w-full xl:w-1/2 h-auto xl:h-full flex flex-col xl:flex-row justify-start items-start flex-wrap border border-black">
-              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 px-[1.44rem] py-[1.25rem] border-black border-b-[1px] xl:border-b-0 xl:border-r-[1px]">
+              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 px-[1.44rem] py-[1.25rem] xl:py-[0.62rem] border-black border-b-[1px] xl:border-b-[0.5px] xl:border-r-[0.5px]">
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   Location
                 </h6>
-                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
-                  The Marathon starts from Okpara Square and ends at Nnamdi
-                  Azikwe Stadium Gate.
+                <p className="text-black text-[1.125rem] xl:text-base font-medium leading-[1.89113rem] uppercase">
+                  The race starts at Nnamdi Azikwe Stadium, passes through Zik
+                  Avenue, Nkpokiti Function, the National Library, and loops
+                  back to the stadium.
                 </p>
               </div>
-              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black border-b-[1px] px-[1.44rem] py-[1.25rem]">
+              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black border-b-[1px] xl:border-b-[0.5px] xl:border-b-l-[0.5px] px-[1.44rem] py-[1.25rem]">
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   Call Us
                 </h6>
-                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                <p className="text-black text-[1.125rem] xl:text-base font-medium uppercase text-justify">
                   08035537369
                 </p>
-                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                <p className="text-black text-[1.125rem] xl:text-base font-medium uppercase text-justify">
                   08063270616
                 </p>
-                <p className="text-black text-[1.125rem] font-medium uppercase text-justify">
+                <p className="text-black text-[1.125rem] xl:text-base font-medium uppercase text-justify">
                   08032744778
                 </p>
               </div>
-              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black xl:border-t-[1px] border-b-[1px] xl:border-b-0 px-[1.44rem] py-[1.25rem]">
+              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black xl:border-t-0 xl:border-r-[1px] border-b-[1px] xl:border-b-0 px-[1.44rem] py-[1.25rem]">
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   MAil Us
                 </h6>
-                <p className="text-black text-[1.125rem] font-medium uppercase text-justify w-full text-wrap break-words">
-                  ministryofyouthandsports@enugustate.gov.ng
-                </p>
+                <a href="mailto:ministryofyouthandsports@enugustate.gov.ng" className="px-[1.875rem] py-[0.625rem] rounded-[0.75rem] bg-black gap-[0.625rem] flex justify-center items-center">
+                  <SendIcon />
+                  <span className="text-white font-medium text-lg uppercase">Send Email</span>
+                </a>
               </div>
-              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black xl:border-l-[1px] border-l-0 px-[1.44rem] py-[1.25rem]">
+              <div className="w-full xl:w-1/2 h-auto xl:h-1/2 border-black border-l-0 px-[1.44rem] py-[1.25rem]">
                 <h6 className="text-black text-[1.875rem] font-black uppercase">
                   FInd Us OnLine
                 </h6>
@@ -293,7 +296,7 @@ function App() {
                   className="flex justify-start items-center gap-[0.62rem]"
                 >
                   <InstagramIcon />
-                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
+                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline xl:text-base">
                     Instagram
                   </p>
                 </a>
@@ -304,7 +307,7 @@ function App() {
                   className="flex justify-start items-center gap-[0.62rem] mt-[0.75rem]"
                 >
                   <FacbookIcon />
-                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline">
+                  <p className="text-black text-[1.125rem] font-medium uppercase text-justify underline xl:text-base">
                     Facebook
                   </p>
                 </a>

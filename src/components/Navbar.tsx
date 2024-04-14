@@ -1,5 +1,5 @@
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/16/solid";
-import ccmLogo from "../assets/ccm-logo.png";
+import ccmLogo from "../assets/ccm-logo.svg";
 import enuguLogo from "../assets/enugu-logo.png";
 import { useEffect, useState } from "react";
 
