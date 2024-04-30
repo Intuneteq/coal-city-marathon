@@ -40,13 +40,14 @@ export default function RegisterForm() {
     };
 
     try {
-      const res = await axios.post<IRegister>(
+      await axios.post<IRegister>(
         // "http://localhost:5000/api/users/register",
         "https://tobi-city-coal.onrender.com/api/users/register",
         data
       );
-      // Redirect user to flutterwave's checkout page
-      window.location.href = res.data.data.link;
+      // Redirect user to google form
+      window.location.href =
+        "https://docs.google.com/forms/d/e/1FAIpQLSfq-NFG_O_fu9Z6lyv69b4VJcnOnOwDxH0B448_-JvQ-bDZBg/viewform";
     } catch (error) {
       const err = error as AxiosError<IError>;
       toast.error(err.response?.data.message);
@@ -213,7 +214,10 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col justify-start items-start mb-6">
-        <label className="text-base xl:text-2xl text-blackI font-semibold uppercase" htmlFor="state">
+        <label
+          className="text-base xl:text-2xl text-blackI font-semibold uppercase"
+          htmlFor="state"
+        >
           State
         </label>
         <Select
@@ -265,7 +269,9 @@ export default function RegisterForm() {
           htmlFor="terms"
           className="text-blackI text-base xl:text-xl font-medium"
         >
-          <a href="" download>I agree to the terms and condition</a>
+          <a href="" download>
+            I agree to the terms and condition
+          </a>
         </label>
       </div>
       <button
@@ -331,9 +337,9 @@ const styles: StylesConfig<SelectOption> = {
     fontSize: "1.875rem",
     color: "#1C1C1C",
 
-    '@media (max-width: 768px)': {
-      fontSize: "1rem", 
-    }
+    "@media (max-width: 768px)": {
+      fontSize: "1rem",
+    },
   }),
   placeholder: (base) => ({
     ...base,
@@ -342,18 +348,18 @@ const styles: StylesConfig<SelectOption> = {
     fontSize: "1.875rem",
     opacity: "50%",
 
-    '@media (max-width: 768px)': {
-      fontSize: "1rem", 
-    }
+    "@media (max-width: 768px)": {
+      fontSize: "1rem",
+    },
   }),
   singleValue: (base) => ({
     ...base,
     color: "#1C1C1C",
     fontSize: "1.875rem",
 
-    '@media (max-width: 768px)': {
-      fontSize: "1rem", 
-    }
+    "@media (max-width: 768px)": {
+      fontSize: "1rem",
+    },
   }),
   dropdownIndicator: (base) => ({
     ...base,

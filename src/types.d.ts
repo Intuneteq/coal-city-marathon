@@ -6,9 +6,7 @@ interface IError {
 interface IRegister {
   success: boolean;
   message: string;
-  data: {
-    link: string;
-  };
+  data: string;
 }
 
 type State = {
