@@ -18,7 +18,7 @@ import SendIcon from "./icons/SendIcon";
 
 function App() {
   const currentDate = new Date();
-  const targetDate = new Date(currentDate.getFullYear(), 4, 4); // April is represented by 3 (zero-based index)
+  const targetDate = new Date(currentDate.getFullYear(), 11, 4); // April is represented by 3 (zero-based index)
   const timeDifference = targetDate.getTime() - currentDate.getTime();
   const [time, setTime] = useState(timeDifference);
 
@@ -51,7 +51,7 @@ function App() {
   };
 
   return (
-    <main className="w-full max-w-screen-2xl font-inter scroll-smooth mx-auto">
+    <main className="w-full max-w-screen-2xl font-inter scroll-smooth mx-auto bg-colorII">
       <header className="bg-headerImg bg-center bg-no-repeat bg-cover w-full min-h-screen pb-[9.42rem] pt-[16.63rem] xl:pt-[11rem] 2xl:pt[16.63rem] flex flex-col justify-center items-center">
         <Navbar />
 
